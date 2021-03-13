@@ -3104,11 +3104,11 @@ Image_columns(VALUE self)
  *   @param channel [Magick::ChannelType] a ChannelType arguments.
  *
  * @overload compare_channel(image, metric, channel = Magick::AllChannels)
- *   If present a block, compare_channel yields to a block in which you can set optional arguments
- *   by setting attributes on self.
- *   - e.highlight_color = color
+ *   When a block is given, compare_channel yields with a block argument you can optionally use to
+ *   set attributes.
+ *   - info.highlight_color = color
  *     - Emphasize pixel differences with this color. The default is partially transparent red.
- *   - e.lowlight_color = color
+ *   - info.lowlight_color = color
  *     - Demphasize pixel differences with this color. The default is partially transparent white.
  *   @param image [Magick::Image, Magick::ImageList] Either an imagelist or an image. If an
  *     imagelist, uses the current image.
@@ -3126,9 +3126,9 @@ Image_columns(VALUE self)
  * @overload compare_channel(image, metric, *channels)
  *   If present a block, compare_channel yields to a block in which you can set optional arguments
  *   by setting attributes on self.
- *   - e.highlight_color = color
+ *   - info.highlight_color = color
  *     - Emphasize pixel differences with this color. The default is partially transparent red.
- *   - e.lowlight_color = color
+ *   - info.lowlight_color = color
  *     - Demphasize pixel differences with this color. The default is partially transparent white.
  *   @param image [Magick::Image, Magick::ImageList] Either an imagelist or an image. If an
  *     imagelist, uses the current image.
@@ -5551,8 +5551,7 @@ Image_dissolve(int argc, VALUE *argv, VALUE self)
  *     the source image will be taken into account in the mapping.
  *
  * @overload distort(type, points, bestfit = false)
- *   If present a block, distort yields to a block in which you can set optional arguments by
- *   setting attributes on self.
+ *   When a block is given, distort yields with a block argument you can optionally use to set attributes.
  *   - self.define("distort:viewport", "WxH+X+Y")
  *     - Specify the size and offset of the generated viewport image of the distorted image space. W and
  *       H are the width and height, and X and Y are the offset.
@@ -10349,8 +10348,8 @@ Image_pixel_interpolation_method_eq(VALUE self, VALUE method)
  *   If present a block, optional arguments may be specified in a block associated with the method.
  *   These arguments control the shadow color and how the label is rendered.
  *   By default the shadow color is gray75. To specify a different shadow color,
- *   use self.shadow_color.
- *   To specify a different border color (that is, the color of the image border) use self.border_color.
+ *   use info.shadow_color.
+ *   To specify a different border color (that is, the color of the image border) use info.border_color.
  *   Both of these methods accept either a color name or a Pixel argument.
  *   @param angle [Float] The resulting image is rotated by this amount, measured in degrees.
  *   @yield []
